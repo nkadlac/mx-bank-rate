@@ -43,10 +43,10 @@ To test the script locally:
 2. Set environment variables:
    ```bash
    export EMAIL_SENDER="nate@kadlac.com"
-   export EMAIL_PASSWORD="lhey zbup uyzx ldsy"
+   export EMAIL_PASSWORD="lheyzbupuyzxldsy"
    export EMAIL_RECIPIENT="nate@kadlac.com"
    # Optional: Set custom API key (default key is already included)
-   export BANXICO_API_KEY="your-custom-api-key"
+   export BANXICO_API_KEY="fe98b823e1f97117bb9263c7dfb00a0434ab5d30ac5a1c0853c23641f72b77bc"
    ```
 
 3. Run the script:

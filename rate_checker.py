@@ -183,7 +183,8 @@ def main():
     """Main entry point"""
     try:
         checker = MexicanRateChecker()
-        checker.check_rate_drop()
+        # Temporarily set threshold to 0 to force email for testing
+        checker.check_rate_drop(threshold_bp=0)
         logger.info("Rate check completed successfully")
     except Exception as e:
         logger.error(f"Rate check failed: {e}")
