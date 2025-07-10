@@ -91,3 +91,31 @@ To see more detailed logs, you can modify the logging level in `rate_checker.py`
 ```python
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 ``` 
+
+Fantastic! 🎉 That means your email notifications are working perfectly!
+
+## Next Steps
+
+1. **Restore the Threshold**  
+   Since you set the threshold to 0 for testing, you should now change it back to `50` basis points for real monitoring.  
+   - In `rate_checker.py`, find:
+     ```python
+     checker.check_rate_drop(threshold_bp=0)
+     ```
+   - Change it back to:
+     ```python
+     checker.check_rate_drop(threshold_bp=50)
+     ```
+   - Commit and push this change.
+
+2. **(Optional) Remove Debug Scripts**  
+   If you want, you can remove or comment out the debug email step from your workflow and delete `debug_email.py` to keep things clean.
+
+3. **Let It Run Automatically**  
+   Your workflow will now check the rate every day and only email you if the drop is 50 basis points or more.
+
+---
+
+**You’re all set!**  
+If you ever want to test again, just lower the threshold temporarily.  
+If you need more features (like logging, multiple recipients, or Slack alerts), just ask! 
