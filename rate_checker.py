@@ -33,7 +33,7 @@ class MexicanRateChecker:
         """Get the current Mexican bank rate from Banxico API"""
         try:
             # Banxico API endpoint for interest rate (SF43718 is the series ID for target rate)
-            url = f"{self.api_base_url}/series/SF43718/datos/oportuno"
+            url = f"{self.api_base_url}/series/SF43936/datos/oportuno"
             
             headers = {
                 'Bmx-Token': self.api_key,
@@ -70,7 +70,7 @@ class MexicanRateChecker:
             end_date = datetime.now()
             start_date = end_date - timedelta(days=days_back)
             
-            url = f"{self.api_base_url}/series/SF43718/datos/{start_date.strftime('%Y-%m-%d')}/{end_date.strftime('%Y-%m-%d')}"
+            url = f"{self.api_base_url}/series/SF43936/datos/{start_date.strftime('%Y-%m-%d')}/{end_date.strftime('%Y-%m-%d')}"
             
             headers = {
                 'Bmx-Token': self.api_key,
