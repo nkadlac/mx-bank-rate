@@ -184,7 +184,7 @@ def main():
     try:
         checker = MexicanRateChecker()
         # Temporarily set threshold to 0 to force email for testing
-        checker.check_rate_drop(threshold_bp=50)
+        checker.check_rate_drop(threshold_bp=25)
         logger.info("Rate check completed successfully")
     except Exception as e:
         logger.error(f"Rate check failed: {e}")
