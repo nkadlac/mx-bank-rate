@@ -6,7 +6,7 @@ A simple automated system that checks for drops in the Mexican bank rate and sen
 
 - ✅ **Free GitHub Actions**: Runs automatically without any hosting costs
 - ✅ **Bank of Mexico API**: Uses the official Banxico API to get real-time rate data
-- ✅ **Weekly Monitoring**: Checks every Monday at 9:00 AM UTC
+- ✅ **Daily Monitoring**: Checks every day at 9:00 AM UTC
 - ✅ **Email Alerts**: Sends notifications when rate drops by 50+ basis points
 - ✅ **Configurable**: Easy to customize threshold and schedule
 - ✅ **Invisible Operation**: Runs in the background with minimal maintenance
@@ -16,7 +16,7 @@ A simple automated system that checks for drops in the Mexican bank rate and sen
 1. **Data Source**: Fetches current and historical interest rates from [Banco de México](https://www.banxico.org.mx)
 2. **Analysis**: Compares current rate with historical data to calculate changes
 3. **Alerting**: Sends email notifications when rate drops meet the threshold (50 basis points)
-4. **Scheduling**: Runs automatically via GitHub Actions every week
+4. **Scheduling**: Runs automatically via GitHub Actions every day
 
 ## Quick Start
 
@@ -46,7 +46,7 @@ A simple automated system that checks for drops in the Mexican bank rate and sen
 - Calculates change from current vs. historical rates
 
 ### Schedule
-- Default: Every Monday at 9:00 AM UTC
+- Default: Every day at 9:00 AM UTC
 - Configurable via cron expression
 - Supports manual triggering for testing
 
