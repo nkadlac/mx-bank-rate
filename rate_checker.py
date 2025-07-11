@@ -63,7 +63,7 @@ class MexicanRateChecker:
             logger.error(f"Error parsing rate data: {e}")
             raise
     
-    def get_historical_rate(self, days_back=7):
+    def get_historical_rate(self, days_back=7, current_date=None):
         """Get historical rate data for comparison"""
         try:
             # Get data for the last N days
@@ -84,13 +84,15 @@ class MexicanRateChecker:
             
             if 'bmx' in data and 'series' in data['bmx']:
                 series = data['bmx']['series'][0]
-                if 'datos' in series and len(series['datos']) >= 2:
-                    # Get the rate from a week ago (or the earliest available)
-                    historical_data = series['datos'][-2]  # Second to last entry
-                    historical_rate = float(historical_data['dato'])
-                    historical_date = historical_data['fecha']
-                    logger.info(f"Historical rate: {historical_rate}% as of {historical_date}")
-                    return historical_rate, historical_date
+                if 'datos' in series and len(series['datos']) >= 1:
+                    # Find the most recent data point that is NOT the current date
+                    for entry in reversed(series['datos']):
+                        if current_date is None or entry['fecha'] != current_date:
+                            historical_rate = float(entry['dato'])
+                            historical_date = entry['fecha']
+                            logger.info(f"Historical rate: {historical_rate}% as of {historical_date}")
+                            return historical_rate, historical_date
+                    raise ValueError("No suitable historical rate data found (all entries are for today)")
             
             raise ValueError("No historical rate data found")
             
@@ -156,7 +158,7 @@ class MexicanRateChecker:
             
             # Get current and historical rates
             current_rate, current_date = self.get_current_rate()
-            historical_rate, historical_date = self.get_historical_rate()
+            historical_rate, historical_date = self.get_historical_rate(current_date=current_date)
             
             # Calculate rate change
             change_bp = self.calculate_rate_change(current_rate, historical_rate)
